@@ -3,6 +3,7 @@ import { LayoutDefault } from "../Layouts/LayoutDefault";
 import sanityClient from "../Client";
 import { useParams } from "react-router-dom";
 import imageUrlBuilder from "@sanity/image-url";
+import { PortableText } from "@portabletext/react";
 
 const builder = imageUrlBuilder(sanityClient);
 
@@ -26,7 +27,7 @@ export const Person = () => {
                     url
                 }
             }, 
-            description,
+            body,
         }`,
         { slug }
       )
@@ -47,6 +48,9 @@ export const Person = () => {
               alt="Image example"
             />
           )}
+          <div>
+            <PortableText value={[personData.body]} />
+          </div>
         </div>
       </section>
     </LayoutDefault>

@@ -1,0 +1,21 @@
+@import "../custom.scss";
+
+.banner.banner__hero {
+  height: 502px;
+}
+
+.banner.banner__skinny {
+  height: 300px;
+}
+
+@media only screen and (min-width: $tablet) {
+  .banner.banner__hero {
+    height: 606px;
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .banner.banner__skinny {
+    height: 355px;
+  }
+}
