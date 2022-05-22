@@ -1,10 +1,7 @@
 // Override default variables before the import
 // $body-bg: #000;
-$tablet: 769px;
-$desktop: 1025px;
+$tablet: 768px;
+$desktop: 992px;
 
 // Import Bootstrap and its default variables
-@import '~bootstrap/scss/bootstrap.scss';
-
-
-
+@import "~bootstrap/scss/bootstrap.scss";

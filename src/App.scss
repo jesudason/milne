@@ -1,0 +1,32 @@
+@import "./custom.scss";
+
+section {
+  border-bottom: 1px solid lightgray;
+}
+main {
+  margin-top: 56px;
+}
+.App {
+  min-height: 100vh;
+}
+.full-width {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: calc(-50% + 50vw);
+  padding-right: calc(-50% + 50vw);
+}
+.content {
+  margin-bottom: 24px;
+}
+
+@media only screen and (min-width: $tablet) {
+  .content {
+    margin-bottom: 32px;
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .content {
+    margin-bottom: 48px;
+  }
+}

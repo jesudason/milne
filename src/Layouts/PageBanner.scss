@@ -1,0 +1,141 @@
+@import "../custom.scss";
+
+.PageBanner {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 24px;
+  border-bottom: solid 1px #212529;
+  background-size: cover;
+  background-color: #212529;
+  color: #fff;
+
+  &__skinny {
+    height: 300px;
+    display: flex;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    flex: 1;
+
+    &--title {
+      margin-bottom: 24px;
+      font-weight: 600;
+      z-index: 3;
+    }
+
+    &--subtitle {
+      font-weight: 400;
+      z-index: 3;
+      font-size: 1.424rem;
+    }
+  }
+
+  &__hero {
+    height: 502px;
+    display: flex;
+
+    .PageBanner__text {
+      align-items: center;
+
+      &--title {
+        font-size: 48px;
+      }
+
+      &--subtitle {
+        font-size: 32px;
+      }
+    }
+  }
+
+  &__image {
+    flex: 1;
+
+    img {
+      max-height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(33, 37, 41, 0.55) 0,
+      rgba(33, 37, 41, 0.25) 65%,
+      transparent
+    );
+  }
+}
+
+@media only screen and (min-width: $tablet) {
+  .PageBanner {
+    border-bottom: solid 1px darkslategray;
+    margin-bottom: 32px;
+
+    &__text {
+      &--subtitle {
+        font-size: 1.953rem;
+      }
+    }
+
+    &__hero {
+      height: 480px;
+
+      .PageBanner__text {
+        align-items: center;
+
+        &--title {
+          font-size: 48px;
+        }
+
+        &--subtitle {
+          font-size: 32px;
+        }
+      }
+    }
+
+    &__skinny {
+      height: 300px;
+    }
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .PageBanner {
+    margin-bottom: 48px;
+
+    &__text {
+      &--subtitle {
+        font-size: 1.953rem;
+      }
+    }
+
+    &__hero {
+      height: 520px;
+
+      .PageBanner__text {
+        align-items: center;
+
+        &--title {
+          font-size: 72px;
+        }
+
+        &--subtitle {
+          font-size: 40px;
+        }
+      }
+    }
+
+    &__skinny {
+      height: 355px;
+    }
+  }
+}

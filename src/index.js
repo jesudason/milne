@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import "./custom.scss";
-import { BrowserRouter } from "react-router-dom";
+import "./typography.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

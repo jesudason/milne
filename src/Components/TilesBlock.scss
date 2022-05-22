@@ -1,0 +1,71 @@
+@import "../custom.scss";
+
+.TilesBlock {
+  margin: 24px 0;
+
+  .col {
+    margin-bottom: 24px;
+  }
+
+  .card {
+    padding: 24px;
+    // box-shadow: 0 0 11px rgb(33 33 33 / 10%);
+    box-shadow: var(--box-shadow);
+
+    &-body {
+      padding: 0;
+    }
+
+    img {
+      width: 120px;
+      min-width: 120px;
+      margin: auto;
+      margin-bottom: 24px;
+    }
+
+    &:hover {
+      transition: 1s;
+      box-shadow: var(--hover-shadow);
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (min-width: $tablet) {
+  .TilesBlock {
+    .col {
+      margin-bottom: 32px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: row;
+      padding: 32px;
+      //   margin-bottom: 32px;
+
+      img {
+        margin-right: 32px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .TilesBlock {
+    .col {
+      margin-bottom: 0;
+    }
+
+    .card {
+      flex-direction: column;
+      padding: 48px;
+      //   margin-bottom: 48px;
+      height: 100%;
+
+      img {
+        margin-right: auto;
+        margin-bottom: 48px;
+      }
+    }
+  }
+}

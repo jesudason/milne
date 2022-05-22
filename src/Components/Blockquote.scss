@@ -1,0 +1,51 @@
+@import "../custom.scss";
+
+.Blockquote {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  blockquote {
+    font-size: 1.4em;
+    font-style: italic;
+    color: #fff;
+    padding: 1.2em 30px 1.2em 75px;
+    line-height: 1.6;
+    position: relative;
+
+    &::before {
+      font-family: Arial;
+      content: "\201C";
+      color: #fff;
+      font-size: 4em;
+      position: absolute;
+      left: 10px;
+      top: -10px;
+    }
+
+    &::after {
+      content: "";
+    }
+
+    span {
+      display: block;
+      //   color: #333333;
+      font-style: normal;
+      font-weight: bold;
+      margin-top: 1em;
+    }
+  }
+}
+
+@media only screen and (min-width: $tablet) {
+  .Blockquote {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .Blockquote {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
