@@ -32,18 +32,24 @@ export const TilesBlock = (props) => {
           <Col key={idx}>
             <Card
               style={{
-                "--box-shadow": ` 0 0 11px ${hexToRgbA(
-                  eval("props.component.hexColour" + (idx + 1)),
-                  0.25
-                )}`,
-                "--hover-shadow": ` 0 0 11px ${hexToRgbA(
-                  eval("props.component.hexColour" + (idx + 1)),
-                  0.55
-                )}`,
-                border: `1px solid ${hexToRgbA(
-                  eval("props.component.hexColour" + (idx + 1)),
-                  0.125
-                )}`,
+                "--box-shadow":
+                  eval("props.component.hexColour" + (idx + 1)) &&
+                  ` 0 0 11px ${hexToRgbA(
+                    eval("props.component.hexColour" + (idx + 1)),
+                    0.25
+                  )}`,
+                "--hover-shadow":
+                  eval("props.component.hexColour" + (idx + 1)) &&
+                  ` 0 0 11px ${hexToRgbA(
+                    eval("props.component.hexColour" + (idx + 1)),
+                    0.55
+                  )}`,
+                border: eval("props.component.hexColour" + (idx + 1))
+                  ? `1px solid ${hexToRgbA(
+                      eval("props.component.hexColour" + (idx + 1)),
+                      0.125
+                    )}`
+                  : `1px solid #fff`,
               }}
             >
               {eval("props.component.image" + (idx + 1)) && (
