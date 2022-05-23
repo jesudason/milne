@@ -3,9 +3,8 @@ import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import sanityClient from "../Client";
-import SocialMedia from "../Components/SocialMedia";
 
-const Navigation = () => {
+export const Navigation = () => {
   const [mainNav, setMainNav] = useState(null);
 
   useEffect(() => {
@@ -16,17 +15,11 @@ const Navigation = () => {
             _id,
             slug,
             title,
-            subtitle,
-            pageType,
-            mainImage,
-            content,
-            pageBuilder
           }
         }`
       )
       .then((data) => {
         setMainNav(data[0].mainNav);
-        // console.log(data);
       })
       .catch(console.error);
   }, []);
@@ -55,12 +48,9 @@ const Navigation = () => {
                   </Nav.Link>
                 ))}
             </Nav>
-            <SocialMedia />
           </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
   );
 };
-
-export default Navigation;

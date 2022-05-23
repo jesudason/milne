@@ -1,0 +1,43 @@
+@import "../variables.scss";
+
+.Footer {
+  margin: 24px 0;
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+
+    // ul {
+    //   padding: 0;
+    //   margin: 0;
+    // }
+
+    > ul li {
+      padding: 0 12px 0 0;
+      line-height: 42px;
+    }
+  }
+
+  &__copywrite {
+    color: #fff;
+  }
+}
+
+@media only screen and (min-width: $tablet) {
+  .Footer {
+    margin: 32px 0;
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .Footer {
+    margin: 48px 0;
+
+    &__navigation {
+      > ul li {
+        padding: 0 24px 0 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import "../variables.scss";
+
+.SocialMedia {
+  margin-left: 24px;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+
+    li {
+      padding: 0 0 0 12px;
+
+      a {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $tablet) {
+  .SocialMedia {
+    margin-left: 32px;
+
+    li {
+      a {
+        //   font-size: 16px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .SocialMedia {
+    margin-left: 48px;
+
+    ul li {
+      padding: 0 0 0 24px;
+      //   a {
+      //     font-size: 24px;
+      //   }
+    }
+  }
+}

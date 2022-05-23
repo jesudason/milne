@@ -1,7 +1,27 @@
 // Override default variables before the import
 // $body-bg: #000;
-$tablet: 768px;
-$desktop: 992px;
+
+// ul {
+//   margin: 0;
+//   padding: 0;
+// }
+
+// li {
+//   list-style: none;
+//   display: inline-block;
+//   padding: 0 6px;
+
+//   a {
+//     color: #fff;
+//     font-size: 16px;
+//   }
+// }
+
+// @media only screen and (min-width: $tablet) {
+// }
+
+// @media only screen and (min-width: $desktop) {
+// }
 
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";

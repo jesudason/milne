@@ -1,4 +1,4 @@
-@import "../custom.scss";
+@import "../variables.scss";
 
 .Map {
   margin: 24px 0;
@@ -32,6 +32,8 @@
 
 @media only screen and (min-width: $tablet) {
   .Map {
+    margin: 32px 0;
+
     .leaflet-container {
       height: 350px;
     }
@@ -48,6 +50,8 @@
 
 @media only screen and (min-width: $desktop) {
   .Map {
+    margin: 48px 0;
+
     .leaflet-container {
       height: 450px;
     }

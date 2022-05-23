@@ -3,12 +3,11 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.scss";
 import { NotFound } from "./Pages/NotFound";
 import sanityClient from "./Client";
-import { Link } from "react-router-dom";
 import { LayoutDefault } from "./Layouts/LayoutDefault";
-import Navigation from "./Layouts/Navbar";
-import Map from "./Components/Map";
-
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { Navigation } from "./Layouts/Navbar";
+import { Footer } from "./Layouts/Footer";
+import "./custom.scss";
+import "./overrides.scss";
 
 function App() {
   const [pages, setPages] = useState(null);
@@ -29,7 +28,6 @@ function App() {
       )
       .then((data) => {
         setPages(data);
-        // console.log(data);
       })
       .catch(console.error);
   }, []);
@@ -65,25 +63,7 @@ function App() {
           </Routes>
         </main>
         <footer className="bg-dark">
-          <div className="container">
-            <div className="flex-shrink-0 py-4 text-white-50">
-              {pages &&
-                pages.map(
-                  (page, index) =>
-                    page.navigation === "footer" && (
-                      <Nav.Link
-                        key={index}
-                        as={Link}
-                        to={"/" + page.slug?.current}
-                        href={"/" + page.slug?.current}
-                      >
-                        {page.title}
-                      </Nav.Link>
-                    )
-                )}
-              <small>Copyright &copy; Your Website</small>
-            </div>
-          </div>
+          <Footer />
         </footer>
       </div>
     </BrowserRouter>

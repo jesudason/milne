@@ -1,4 +1,4 @@
-@import "../custom.scss";
+@import "../variables.scss";
 
 .TilesBlock {
   margin: 24px 0;
@@ -33,6 +33,8 @@
 
 @media only screen and (min-width: $tablet) {
   .TilesBlock {
+    margin: 32px 0;
+
     .col {
       margin-bottom: 32px;
     }
@@ -52,6 +54,8 @@
 
 @media only screen and (min-width: $desktop) {
   .TilesBlock {
+    margin: 48px 0;
+
     .col {
       margin-bottom: 0;
     }
