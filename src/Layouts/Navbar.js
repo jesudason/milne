@@ -3,6 +3,7 @@ import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import sanityClient from "../Client";
+import SocialMedia from "../Components/SocialMedia";
 
 const Navigation = () => {
   const [mainNav, setMainNav] = useState(null);
@@ -25,10 +26,10 @@ const Navigation = () => {
       )
       .then((data) => {
         setMainNav(data[0].mainNav);
+        // console.log(data);
       })
       .catch(console.error);
   }, []);
-
   return (
     <>
       <Navbar collapseOnSelect fixed="top" bg="light" expand="lg">
@@ -54,6 +55,7 @@ const Navigation = () => {
                   </Nav.Link>
                 ))}
             </Nav>
+            <SocialMedia />
           </Navbar.Collapse>
         </Container>
       </Navbar>

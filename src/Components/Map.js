@@ -2,24 +2,75 @@ import React, { useEffect, useState } from "react";
 import "./Map.scss";
 import sanityClient from "../Client";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+import { TelephoneFill, EnvelopeFill, Mailbox2 } from "react-bootstrap-icons";
 
 function SetMarkers(props) {
-  const { locations } = props;
-  const map = useMap();
+  const component = props.component;
+  const locations = props.locations;
+  const locationsToDisplay = [];
   const markersArr = [];
+
+  component.points.map((point) => {
+    locationsToDisplay.push(point._ref);
+  });
 
   locations &&
     locations.forEach((location) => {
-      markersArr.push(location.marker);
+      if (locationsToDisplay.includes(location._id)) {
+        markersArr.push(location.marker);
+      }
     });
 
-  map.fitBounds(markersArr);
+  const map = useMap();
+  map.fitBounds(markersArr, { padding: [24, 24] });
 
   return (
     <>
       {markersArr.map((marker, index) => (
-        <Marker position={[marker.lat, marker.lng]} key={index}>
-          <Popup>{(marker.lat, marker.lng)}</Popup>
+        <Marker
+          className="test-marker"
+          position={[marker.lat, marker.lng]}
+          key={index}
+        >
+          <Popup>
+            {locations[index].title ? <p>{locations[index].title} </p> : ""}
+            {locations[index].address ? (
+              <span className="popup__content">
+                <span className="popup__content--icon">
+                  <Mailbox2 />
+                </span>
+                {locations[index].address}{" "}
+              </span>
+            ) : (
+              ""
+            )}
+            {locations[index].phone ? (
+              <span className="popup__content">
+                <span className="popup__content--icon">
+                  <TelephoneFill />
+                </span>
+
+                <a href={`tel:${locations[index].phone}`}>
+                  {locations[index].phone}
+                </a>
+              </span>
+            ) : (
+              ""
+            )}
+            {locations[index].email ? (
+              <span className="popup__content">
+                <span className="popup__content--icon">
+                  <EnvelopeFill />
+                </span>
+
+                <a href={`mailto:${locations[index].email}`}>
+                  {locations[index].email}
+                </a>
+              </span>
+            ) : (
+              ""
+            )}
+          </Popup>
         </Marker>
       ))}
     </>
@@ -27,26 +78,21 @@ function SetMarkers(props) {
 }
 
 export const Map = (props) => {
+  const component = props.component;
+  const defaultCenter = component.center;
   const [locations, setLocations] = useState(null);
 
   useEffect(() => {
     sanityClient
-      .fetch(
-        `*[_type == "locations"]{
-      title,
-      marker,
-    }`
-      )
+      .fetch(`*[_type == "locations"]`)
       .then((data) => {
         setLocations(data);
       })
       .catch(console.error);
   }, []);
 
-  const defaultCenter = props.component.center;
-
   return (
-    <div className="Map" id={props.component._key}>
+    <div className="Map" id={component._key}>
       <h2>Map</h2>
       <div className="Map__container">
         <MapContainer
@@ -59,7 +105,11 @@ export const Map = (props) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          {locations && <SetMarkers locations={locations} />}
+          {component && locations ? (
+            <SetMarkers component={component} locations={locations} />
+          ) : (
+            ""
+          )}
         </MapContainer>
       </div>
     </div>

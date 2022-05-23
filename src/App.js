@@ -29,6 +29,7 @@ function App() {
       )
       .then((data) => {
         setPages(data);
+        // console.log(data);
       })
       .catch(console.error);
   }, []);
