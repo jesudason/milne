@@ -1,75 +1,89 @@
 import { Row, Col, Card } from "react-bootstrap";
-import urlFor from "../helpers";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { urlFor, hexToRgbA } from "../helpers";
+import sanityClient from "../Client";
 import "./TilesBlock.scss";
 
-export const TilesBlock = (props) => {
-  // console.log("TilesBlock");
-  // console.log(props);
+function TileCard(props) {
+  const component = props.component;
+  const index = props.idx;
+  return (
+    <Card
+      style={{
+        "--box-shadow":
+          eval("component.hexColour" + index) &&
+          ` 0 1px 2px ${hexToRgbA(eval("component.hexColour" + index), 0.2)}`,
+        "--hover-shadow":
+          eval("component.hexColour" + index) &&
+          ` 0 4px 12px ${hexToRgbA(eval("component.hexColour" + index), 0.35)}`,
+      }}
+    >
+      {eval("component.image" + index) && (
+        <Card.Img
+          src={urlFor(eval("component.image" + index))
+            .width(120)
+            .url()}
+        />
+      )}
+      <Card.Body>
+        <Card.Title>{eval("component.tileHeading" + index)}</Card.Title>
+        <Card.Text>{eval("component.tileText" + index)}</Card.Text>
+      </Card.Body>
+    </Card>
+  );
+}
 
-  function hexToRgbA(hex, opacity) {
-    var c;
-    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-      c = hex.substring(1).split("");
-      if (c.length == 3) {
-        c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+export const TilesBlock = (props) => {
+  const component = props.component;
+  const [pages, setPages] = useState(null);
+  const slugs = [
+    component.url1?._ref,
+    component.url2?._ref,
+    component.url3?._ref,
+  ];
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "pages"]{
+            _id,
+            slug,
+        }`
+      )
+      .then((data) => {
+        setPages(data);
+        console.log("app data", data);
+      })
+      .catch(console.error);
+  }, []);
+
+  pages &&
+    pages.forEach((page) => {
+      if (slugs.includes(page._id)) {
+        const objIndex = slugs.indexOf(page._id);
+        slugs[objIndex] = page.slug.current;
       }
-      c = "0x" + c.join("");
-      return (
-        "rgba(" +
-        [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(",") +
-        "," +
-        opacity +
-        ")"
-      );
-    }
-    throw new Error("Bad Hex");
-  }
+    });
+
+  console.log(slugs);
 
   return (
     <div className="TilesBlock" id={props.component._key}>
       <Row xs={1} lg={3}>
-        {Array.from({ length: 3 }).map((_, idx) => (
-          <Col key={idx}>
-            <Card
-              style={{
-                "--box-shadow":
-                  eval("props.component.hexColour" + (idx + 1)) &&
-                  ` 0 0 11px ${hexToRgbA(
-                    eval("props.component.hexColour" + (idx + 1)),
-                    0.25
-                  )}`,
-                "--hover-shadow":
-                  eval("props.component.hexColour" + (idx + 1)) &&
-                  ` 0 0 11px ${hexToRgbA(
-                    eval("props.component.hexColour" + (idx + 1)),
-                    0.55
-                  )}`,
-                border: eval("props.component.hexColour" + (idx + 1))
-                  ? `1px solid ${hexToRgbA(
-                      eval("props.component.hexColour" + (idx + 1)),
-                      0.125
-                    )}`
-                  : `1px solid #fff`,
-              }}
-            >
-              {eval("props.component.image" + (idx + 1)) && (
-                <Card.Img
-                  src={urlFor(eval("props.component.image" + (idx + 1)))
-                    .width(120)
-                    .url()}
-                />
-              )}
-              <Card.Body>
-                <Card.Title>
-                  {eval("props.component.tileHeading" + (idx + 1))}
-                </Card.Title>
-                <Card.Text>
-                  {eval("props.component.tileText" + (idx + 1))}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
+        {Array.from({ length: 3 }).map((_, idx) =>
+          !!slugs[idx] ? (
+            <Col key={idx}>
+              <a href={`./ ${slugs[idx]}`}>
+                <TileCard idx={idx + 1} component={component} />
+              </a>
+            </Col>
+          ) : (
+            <Col key={idx}>
+              <TileCard idx={idx + 1} component={component} />
+            </Col>
+          )
+        )}
       </Row>
     </div>
   );

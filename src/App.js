@@ -1,3 +1,4 @@
+import "./custom.scss";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.scss";
@@ -6,8 +7,8 @@ import sanityClient from "./Client";
 import { LayoutDefault } from "./Layouts/LayoutDefault";
 import { Navigation } from "./Layouts/Navbar";
 import { Footer } from "./Layouts/Footer";
-import "./custom.scss";
 import "./overrides.scss";
+import "./typography.scss";
 
 function App() {
   const [pages, setPages] = useState(null);
@@ -28,6 +29,7 @@ function App() {
       )
       .then((data) => {
         setPages(data);
+        // console.log("app data", data);
       })
       .catch(console.error);
   }, []);

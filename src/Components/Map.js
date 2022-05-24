@@ -1,8 +1,8 @@
+import { TelephoneFill, EnvelopeFill, Mailbox2 } from "react-bootstrap-icons";
 import React, { useEffect, useState } from "react";
 import "./Map.scss";
 import sanityClient from "../Client";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
-import { TelephoneFill, EnvelopeFill, Mailbox2 } from "react-bootstrap-icons";
 
 function SetMarkers(props) {
   const component = props.component;

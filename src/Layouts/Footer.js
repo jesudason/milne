@@ -3,7 +3,6 @@ import SocialMedia from "../Components/SocialMedia";
 import { Link } from "react-router-dom";
 import sanityClient from "../Client";
 import "./Footer.scss";
-import "../custom.scss";
 
 export const Footer = () => {
   const [footerNav, setFooterNav] = useState(null);

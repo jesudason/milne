@@ -5,27 +5,38 @@
 
   .col {
     margin-bottom: 24px;
-  }
 
-  .card {
-    padding: 24px;
-    box-shadow: var(--box-shadow);
+    a {
+      height: 100%;
+      color: inherit;
+      text-decoration: inherit;
 
-    &-body {
-      padding: 0;
+      .card {
+        &:hover {
+          transition: 1s;
+          box-shadow: var(--hover-shadow);
+          cursor: pointer;
+          -webkit-transform: scale(1.02, 1.02);
+          transform: scale(1.02, 1.02);
+        }
+      }
     }
 
-    img {
-      width: 120px;
-      min-width: 120px;
-      margin: auto;
-      margin-bottom: 24px;
-    }
+    .card {
+      border: none;
+      padding: 24px;
+      box-shadow: var(--box-shadow);
 
-    &:hover {
-      transition: 1s;
-      box-shadow: var(--hover-shadow);
-      cursor: pointer;
+      &-body {
+        padding: 0;
+      }
+
+      img {
+        width: 120px;
+        min-width: 120px;
+        margin: auto;
+        margin-bottom: 24px;
+      }
     }
   }
 }

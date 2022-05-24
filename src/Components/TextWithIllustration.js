@@ -1,7 +1,7 @@
 import React from "react";
 import "./TextWithIllustration.scss";
 import { PortableText } from "@portabletext/react";
-import urlFor from "../helpers";
+import { urlFor } from "../helpers";
 
 export const TextWithIllustration = (props) => {
   return (

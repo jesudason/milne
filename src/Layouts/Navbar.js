@@ -1,5 +1,5 @@
-import "./Navbar.scss";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import sanityClient from "../Client";
