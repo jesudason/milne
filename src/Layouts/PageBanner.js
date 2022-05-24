@@ -18,7 +18,7 @@ export const PageBanner = ({ props }) => {
           : "none",
       }}
     >
-      {props.pageType == "index" ? (
+      {props.pageType === "index" ? (
         <div className="PageBanner__hero">
           <div className="PageBanner__text">
             <h1 className="PageBanner__text--title">{props.title}</h1>
