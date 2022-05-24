@@ -9,6 +9,7 @@ import { Navigation } from "./Layouts/Navbar";
 import { Footer } from "./Layouts/Footer";
 import "./overrides.scss";
 import "./typography.scss";
+import { ContactForm } from "./Components/ContactForm";
 
 function App() {
   const [pages, setPages] = useState(null);
@@ -63,6 +64,7 @@ function App() {
                 )
               )}
           </Routes>
+          <ContactForm />
         </main>
         <footer className="bg-dark">
           <Footer />
