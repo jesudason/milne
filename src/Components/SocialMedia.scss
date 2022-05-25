@@ -12,6 +12,17 @@
 
       a {
         font-size: 24px;
+
+        &:after {
+          content: none;
+          border-bottom: none;
+        }
+
+        &:hover {
+          color: #fff;
+          transform: scale(1.04);
+          transition: 0.3s;
+        }
       }
     }
   }
