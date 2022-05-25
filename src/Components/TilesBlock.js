@@ -53,7 +53,6 @@ export const TilesBlock = (props) => {
       )
       .then((data) => {
         setPages(data);
-        console.log("app data", data);
       })
       .catch(console.error);
   }, []);
@@ -65,8 +64,6 @@ export const TilesBlock = (props) => {
         slugs[objIndex] = page.slug.current;
       }
     });
-
-  console.log(slugs);
 
   return (
     <div className="TilesBlock" id={props.component._key}>

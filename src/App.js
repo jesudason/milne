@@ -9,7 +9,6 @@ import { Navigation } from "./Layouts/Navbar";
 import { Footer } from "./Layouts/Footer";
 import "./overrides.scss";
 import "./typography.scss";
-import { ContactForm } from "./Components/ContactForm";
 
 function App() {
   const [pages, setPages] = useState(null);
@@ -24,13 +23,20 @@ function App() {
             subtitle,
             pageType,
             mainImage,
-            content,
+            content[]{
+              ...,
+              markDefs[]{
+                ...,
+                _type == "internalLink" => {
+                  "slug": @.reference->slug
+                }
+              }
+            },
             pageBuilder
         }`
       )
       .then((data) => {
         setPages(data);
-        // console.log("app data", data);
       })
       .catch(console.error);
   }, []);
@@ -64,7 +70,6 @@ function App() {
                 )
               )}
           </Routes>
-          <ContactForm />
         </main>
         <footer className="bg-dark">
           <Footer />

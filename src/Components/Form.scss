@@ -1,0 +1,64 @@
+@import "../variables.scss";
+
+.Form {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: $primary-color;
+  color: #fff;
+
+  form {
+    .textarea textarea,
+    .input input {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: $tablet) {
+  .Form {
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    form {
+      .input {
+        display: inline-block;
+        width: 50%;
+      }
+
+      .input {
+        padding-left: 8px;
+        &:first-of-type {
+          padding-right: 8px;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .Form {
+    padding-top: 48px;
+    padding-bottom: 48px;
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      width: 50%;
+      margin: 0 auto;
+
+      .textarea,
+      .input {
+        width: 100%;
+        display: block;
+      }
+      .input:first-of-type,
+      .input {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}

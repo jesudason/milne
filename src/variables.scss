@@ -1,2 +1,76 @@
 $tablet: 768px;
 $desktop: 992px;
+$primary-color: #147386;
+$secondary-color: #381486;
+
+@mixin button-style($bg, $clr) {
+  background: $bg;
+  border: solid 1px $bg;
+  color: $clr;
+
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 25%);
+  }
+}
+
+button,
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:disabled {
+    background-color: lighten(#36454f, 55%);
+    border: solid #36454f 1px;
+    color: #36454f;
+  }
+}
+
+a[rel~="external"] {
+  padding-right: 8px;
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    // position: absolute;
+    position: relative;
+    right: -8px;
+    content: "->";
+    transition: 0.3s;
+  }
+
+  &:hover {
+    &::after {
+      right: -16px;
+    }
+  }
+}
+
+.btn-primary {
+  @include button-style($primary-color, #fff);
+}
+
+.btn-secondary {
+  @include button-style($secondary-color, #fff);
+}
+
+.btn-inverse {
+  @include button-style(transparent, $primary-color);
+}
+
+// .btn-link {
+//   @include button-style(transparent, $primary-color);
+// }

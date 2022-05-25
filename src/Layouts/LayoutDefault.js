@@ -1,36 +1,64 @@
 import React, { FC } from "react";
 import { PortableText } from "@portabletext/react";
+// import { PortableText } from "@sanity/block-content-to-react";
 import { PageBanner } from "./PageBanner";
 import { People } from "../Components/People";
 import { TextWithIllustration } from "../Components/TextWithIllustration";
 import { Gallery } from "../Components/Gallery";
 import { PersonCard } from "../Components/PersonCard";
-import { ContactForm } from "../Components/ContactForm";
+import { ContactForm } from "../Components/Form";
 import { Testimonials } from "../Components/Testimonials";
 import { Blockquote } from "../Components/Blockquote";
 import { TilesBlock } from "../Components/TilesBlock";
 import { Map } from "../Components/Map";
+import { Form } from "../Components/Form";
+import "../variables.scss";
 
 const Components = {
   textWithIllustration: TextWithIllustration,
   gallery: Gallery,
   people: People,
   personCard: PersonCard,
-  form: ContactForm,
   testimonials: Testimonials,
   blockquote: Blockquote,
   tilesBlock: TilesBlock,
   map: Map,
+  form: Form,
+};
+
+const components = {
+  marks: {
+    internalLink: ({ value, children }) => {
+      const { slug = {} } = value;
+      console.log("slug", slug);
+      const href = `/${slug.current}`;
+      return <a href={href}>{children}</a>;
+    },
+    link: ({ children, value }) => {
+      const rel = !value.href.startsWith("/")
+        ? "external noreferrer noopener"
+        : undefined;
+      return (
+        <a href={value.href} rel={rel} target="_blank">
+          {children}
+        </a>
+      );
+    },
+    code: (props) => (
+      <span dangerouslySetInnerHTML={{ __html: props.text }}></span>
+    ),
+  },
 };
 
 export const LayoutDefault = ({ props }) => {
+  console.log("props", props);
   return (
     <div className="LayoutDefault">
       <div className="container">
         <PageBanner props={props} />
         {props?.content && (
           <div className="content">
-            <PortableText value={props.content} />
+            <PortableText value={props.content} components={components} />
           </div>
         )}
         {props.pageBuilder &&
