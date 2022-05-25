@@ -1,7 +1,10 @@
 $tablet: 768px;
 $desktop: 992px;
-$primary-color: #147386;
-$secondary-color: #381486;
+$primary-color: #ea5a17;
+$secondary-color: #5eb1bf;
+$brand-black: #042a2b;
+$brand-white: #fcebd8;
+$accent-color: #f5a242;
 
 @mixin button-style($bg, $clr) {
   background: $bg;
