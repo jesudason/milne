@@ -71,7 +71,7 @@ export const TilesBlock = (props) => {
         {Array.from({ length: 3 }).map((_, idx) =>
           !!slugs[idx] ? (
             <Col key={idx}>
-              <a href={`./ ${slugs[idx]}`}>
+              <a href={`./${slugs[idx]}`}>
                 <TileCard idx={idx + 1} component={component} />
               </a>
             </Col>
