@@ -22,57 +22,58 @@ function SetMarkers(props) {
     });
 
   const map = useMap();
-  map.fitBounds(markersArr, { padding: [24, 24] });
+  markersArr.length > 0 && map.fitBounds(markersArr, { padding: [24, 24] });
 
   return (
     <>
-      {markersArr.map((marker, index) => (
-        <Marker
-          className="test-marker"
-          position={[marker.lat, marker.lng]}
-          key={index}
-        >
-          <Popup>
-            {locations[index].title ? <p>{locations[index].title} </p> : ""}
-            {locations[index].address ? (
-              <span className="popup__content">
-                <span className="popup__content--icon">
-                  <Mailbox2 />
+      {markersArr.length > 0 &&
+        markersArr.map((marker, index) => (
+          <Marker
+            className="test-marker"
+            position={[marker.lat, marker.lng]}
+            key={index}
+          >
+            <Popup>
+              {locations[index].title ? <p>{locations[index].title} </p> : ""}
+              {locations[index].address ? (
+                <span className="popup__content">
+                  <span className="popup__content--icon">
+                    <Mailbox2 />
+                  </span>
+                  {locations[index].address}{" "}
                 </span>
-                {locations[index].address}{" "}
-              </span>
-            ) : (
-              ""
-            )}
-            {locations[index].phone ? (
-              <span className="popup__content">
-                <span className="popup__content--icon">
-                  <TelephoneFill />
-                </span>
+              ) : (
+                ""
+              )}
+              {locations[index].phone ? (
+                <span className="popup__content">
+                  <span className="popup__content--icon">
+                    <TelephoneFill />
+                  </span>
 
-                <a href={`tel:${locations[index].phone}`}>
-                  {locations[index].phone}
-                </a>
-              </span>
-            ) : (
-              ""
-            )}
-            {locations[index].email ? (
-              <span className="popup__content">
-                <span className="popup__content--icon">
-                  <EnvelopeFill />
+                  <a href={`tel:${locations[index].phone}`}>
+                    {locations[index].phone}
+                  </a>
                 </span>
+              ) : (
+                ""
+              )}
+              {locations[index].email ? (
+                <span className="popup__content">
+                  <span className="popup__content--icon">
+                    <EnvelopeFill />
+                  </span>
 
-                <a href={`mailto:${locations[index].email}`}>
-                  {locations[index].email}
-                </a>
-              </span>
-            ) : (
-              ""
-            )}
-          </Popup>
-        </Marker>
-      ))}
+                  <a href={`mailto:${locations[index].email}`}>
+                    {locations[index].email}
+                  </a>
+                </span>
+              ) : (
+                ""
+              )}
+            </Popup>
+          </Marker>
+        ))}
     </>
   );
 }
@@ -104,7 +105,6 @@ export const Map = (props) => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-
           {component && locations ? (
             <SetMarkers component={component} locations={locations} />
           ) : (
