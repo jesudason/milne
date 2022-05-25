@@ -38,23 +38,45 @@ button,
     color: #36454f;
   }
 }
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:not([rel~="external"]) {
+  line-height: initial;
+  &:after {
+    display: block;
+    content: "";
+    border-bottom: solid 1px #0d6efd;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  &:hover:after {
+    transform: scaleX(1);
+  }
+  &:after {
+    transform-origin: 0 50%;
+  }
+}
 
 a[rel~="external"] {
   padding-right: 8px;
   position: relative;
-  text-decoration: none;
 
   &::after {
-    // position: absolute;
     position: relative;
-    right: -8px;
-    content: "->";
+    left: 8px;
+    top: 6px;
+    content: url("./Images/external-link.svg");
     transition: 0.3s;
   }
 
   &:hover {
+    text-decoration: none;
+
     &::after {
-      right: -16px;
+      left: 16px;
     }
   }
 }
