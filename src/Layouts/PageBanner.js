@@ -1,11 +1,6 @@
 import React from "react";
 import "./PageBanner.scss";
-import client from "../Client";
-import imageUrlBuilder from "@sanity/image-url";
-const builder = imageUrlBuilder(client);
-function urlFor(source) {
-  return builder.image(source);
-}
+import { urlFor } from "../helpers";
 
 export const PageBanner = ({ props }) => {
   const bannerImageURL = props.mainImage ? urlFor(props.mainImage).url() : "";

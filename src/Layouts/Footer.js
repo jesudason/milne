@@ -28,7 +28,6 @@ export const Footer = () => {
       .catch(console.error);
   }, []);
 
-  console.log(siteInfo);
   return (
     <>
       <div className="Footer">

@@ -30,7 +30,6 @@ const components = {
   marks: {
     internalLink: ({ value, children }) => {
       const { slug = {} } = value;
-      console.log("slug", slug);
       const href = `/${slug.current}`;
       return <a href={href}>{children}</a>;
     },
@@ -51,7 +50,6 @@ const components = {
 };
 
 export const LayoutDefault = ({ props }) => {
-  console.log("props", props);
   return (
     <div className="LayoutDefault">
       <div className="container">

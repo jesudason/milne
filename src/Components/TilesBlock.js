@@ -6,29 +6,22 @@ import sanityClient from "../Client";
 import "./TilesBlock.scss";
 
 function TileCard(props) {
-  const component = props.component;
-  const index = props.idx;
+  const image = props.image;
+  const heading = props.heading;
+  const text = props.text;
+  const hex = props.hex;
+
   return (
     <Card
       style={{
-        "--box-shadow":
-          eval("component.hexColour" + index) &&
-          ` 0 1px 2px ${hexToRgbA(eval("component.hexColour" + index), 0.2)}`,
-        "--hover-shadow":
-          eval("component.hexColour" + index) &&
-          ` 0 4px 12px ${hexToRgbA(eval("component.hexColour" + index), 0.35)}`,
+        "--box-shadow": hex && ` 0 2px 7px ${hexToRgbA(hex, 0.25)}`,
+        "--hover-shadow": hex && ` 0 4px 12px ${hexToRgbA(hex, 0.45)}`,
       }}
     >
-      {eval("component.image" + index) && (
-        <Card.Img
-          src={urlFor(eval("component.image" + index))
-            .width(120)
-            .url()}
-        />
-      )}
+      {image && <Card.Img src={urlFor(image).width(120).url()} />}
       <Card.Body>
-        <Card.Title>{eval("component.tileHeading" + index)}</Card.Title>
-        <Card.Text>{eval("component.tileText" + index)}</Card.Text>
+        <Card.Title>{heading}</Card.Title>
+        <Card.Text>{text}</Card.Text>
       </Card.Body>
     </Card>
   );
@@ -41,6 +34,23 @@ export const TilesBlock = (props) => {
     component.url1?._ref,
     component.url2?._ref,
     component.url3?._ref,
+  ];
+  const colors = [
+    component.hexColour1,
+    component.hexColour2,
+    component.hexColour3,
+  ];
+  const headings = [
+    component.tileHeading1,
+    component.tileHeading2,
+    component.tileHeading3,
+  ];
+  const images = [component.image1, component.image2, component.image3];
+
+  const tileTexts = [
+    component.tileText1,
+    component.tileText2,
+    component.tileText3,
   ];
 
   useEffect(() => {
@@ -72,12 +82,22 @@ export const TilesBlock = (props) => {
           !!slugs[idx] ? (
             <Col key={idx}>
               <a href={`./${slugs[idx]}`}>
-                <TileCard idx={idx + 1} component={component} />
+                <TileCard
+                  hex={colors[idx]}
+                  heading={headings[idx]}
+                  text={tileTexts[idx]}
+                  image={images[idx]}
+                />
               </a>
             </Col>
           ) : (
             <Col key={idx}>
-              <TileCard idx={idx + 1} component={component} />
+              <TileCard
+                hex={colors[idx]}
+                heading={headings[idx]}
+                text={tileTexts[idx]}
+                image={images[idx]}
+              />
             </Col>
           )
         )}
