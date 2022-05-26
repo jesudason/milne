@@ -24,33 +24,30 @@ export const Navigation = () => {
       .catch(console.error);
   }, []);
   return (
-    <>
+    <div className="Navigation">
       <Navbar collapseOnSelect fixed="top" bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand as={Link} to="/" href="/">
-            React-Bootstrap
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse
-            className="justify-content-end"
-            id="basic-navbar-nav"
-          >
-            <Nav className="align-items-center" defaultActiveKey="/home">
-              {mainNav &&
-                mainNav.map((page, index) => (
-                  <Nav.Link
-                    key={index}
-                    as={Link}
-                    to={"/" + page.slug.current}
-                    href={"/" + page.slug.current}
-                  >
-                    {page.title}
-                  </Nav.Link>
-                ))}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
+        {/* <Container> */}
+        <Navbar.Brand as={Link} to="/" href="/">
+          React-Bootstrap
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
+          <Nav className="align-items-center" defaultActiveKey="/home">
+            {mainNav &&
+              mainNav.map((page, index) => (
+                <Nav.Link
+                  key={index}
+                  as={Link}
+                  to={"/" + page.slug.current}
+                  href={"/" + page.slug.current}
+                >
+                  {page.title}
+                </Nav.Link>
+              ))}
+          </Nav>
+        </Navbar.Collapse>
+        {/* </Container> */}
       </Navbar>
-    </>
+    </div>
   );
 };

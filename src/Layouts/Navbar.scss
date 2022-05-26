@@ -1,3 +1,84 @@
-.navbar-collapse {
-    flex-grow: unset;
+@import "../variables.scss";
+
+.Navigation {
+  .navbar {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  a:hover,
+  a:active,
+  a:focus,
+  button:hover,
+  button:active,
+  button:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  a.nav-link {
+    padding: 12px 0;
+
+    &:first-of-type {
+      padding-top: 24px;
+    }
+
+    &:after {
+      border-color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  a.navbar-brand {
+    padding: 16px 24px;
+  }
+
+  button.navbar-toggler,
+  a.navbar-brand {
+    border-radius: $border-radius;
+    transition: 0.3s;
+    border: none;
+
+    &:after {
+      border-bottom: none;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      background: darken(#fff, 10%);
+    }
+  }
+}
+@media only screen and (min-width: $tablet) {
+  .Navigation {
+    .navbar {
+      padding-left: 32px;
+      padding-right: 32px;
+
+      a.nav-link {
+        padding: 16px 0;
+
+        &:first-of-type {
+          padding-top: 32px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: $desktop) {
+  .Navigation {
+    .navbar {
+      padding-left: 48px;
+      padding-right: 48px;
+
+      a.nav-link {
+        padding: 0 0 0 48px;
+
+        &:first-of-type {
+          padding-top: 0;
+        }
+      }
+    }
+  }
 }
