@@ -20,8 +20,8 @@ function TileCard(props) {
     >
       {image && <Card.Img src={urlFor(image).width(120).url()} />}
       <Card.Body>
-        <Card.Title>{heading}</Card.Title>
-        <Card.Text>{text}</Card.Text>
+        {heading && <Card.Title>{heading}</Card.Title>}
+        {text && <Card.Text>{text}</Card.Text>}
       </Card.Body>
     </Card>
   );

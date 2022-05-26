@@ -12,6 +12,7 @@ import { Blockquote } from "../Components/Blockquote";
 import { TilesBlock } from "../Components/TilesBlock";
 import { Map } from "../Components/Map";
 import { Form } from "../Components/Form";
+import { FeatureText } from "../Components/FeatureText";
 import "../variables.scss";
 
 const Components = {
@@ -24,6 +25,7 @@ const Components = {
   tilesBlock: TilesBlock,
   map: Map,
   form: Form,
+  featureText: FeatureText,
 };
 
 const components = {

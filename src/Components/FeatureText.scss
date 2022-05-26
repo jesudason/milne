@@ -1,0 +1,32 @@
+@import "../variables.scss";
+
+.FeatureText {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+p {
+  font-size: 1.4em;
+  padding: 1.2em 30px 1.2em 75px;
+  line-height: 1.6;
+  position: relative;
+  margin-bottom: 0;
+
+  &.primary-color-text {
+    color: $primary-color;
+  }
+}
+
+@media only screen and (min-width: $tablet) {
+  .FeatureText {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .FeatureText {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
