@@ -26,7 +26,6 @@ export const Navigation = () => {
   return (
     <div className="Navigation">
       <Navbar collapseOnSelect fixed="top" bg="light" expand="lg">
-        {/* <Container> */}
         <Navbar.Brand as={Link} to="/" href="/">
           React-Bootstrap
         </Navbar.Brand>
@@ -46,7 +45,6 @@ export const Navigation = () => {
               ))}
           </Nav>
         </Navbar.Collapse>
-        {/* </Container> */}
       </Navbar>
     </div>
   );

@@ -37,8 +37,6 @@ export default function SocialMedia(props) {
       .catch(console.error);
   }, []);
 
-  // console.log("socials", socials);
-
   return (
     <div className="SocialMedia">
       <ul>

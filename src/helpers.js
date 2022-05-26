@@ -3,6 +3,12 @@ import client from "./Client";
 
 const builder = imageUrlBuilder(client);
 
+export function decodeHtml(html) {
+  var txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
+
 export function urlFor(source) {
   return builder.image(source);
 }

@@ -3,9 +3,11 @@ import SocialMedia from "../Components/SocialMedia";
 import { Link } from "react-router-dom";
 import sanityClient from "../Client";
 import "./Footer.scss";
+import { decodeHtml } from "../helpers";
 
 export const Footer = () => {
   const [footerNav, setFooterNav] = useState(null);
+  const [siteInfo, setSiteInfo] = useState(null);
 
   useEffect(() => {
     sanityClient
@@ -15,15 +17,18 @@ export const Footer = () => {
             _id,
             slug,
             title,
-          }
+          },
+          title
         }`
       )
       .then((data) => {
-        setFooterNav(data[0].footerNav);
+        data[0]?.footerNav && setFooterNav(data[0].footerNav);
+        data[0]?.title && setSiteInfo(data[0].title);
       })
       .catch(console.error);
   }, []);
 
+  console.log(siteInfo);
   return (
     <>
       <div className="Footer">
@@ -45,7 +50,9 @@ export const Footer = () => {
             <SocialMedia />
           </div>
           <div className="Footer__copywrite">
-            <small>Copyright &copy; Your Website</small>
+            <small>
+              {siteInfo ? `Copyright ${decodeHtml("&copy;")} ${siteInfo}` : ""}
+            </small>
           </div>
         </div>
       </div>
