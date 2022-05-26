@@ -3,12 +3,16 @@
 .PageBanner {
   position: relative;
   margin-top: 0;
-  margin-bottom: 24px;
+
   border-bottom: solid 1px #212529;
   background-size: cover;
   background-color: #212529;
   background-position: center;
   color: #fff;
+
+  & + div.content {
+    margin-top: 24px;
+  }
 
   &__skinny {
     height: 300px;
@@ -80,7 +84,10 @@
 @media only screen and (min-width: $tablet) {
   .PageBanner {
     border-bottom: solid 1px darkslategray;
-    margin-bottom: 32px;
+
+    & + div.content {
+      margin-top: 32px;
+    }
 
     &__text {
       &--subtitle {
@@ -112,7 +119,9 @@
 
 @media only screen and (min-width: $desktop) {
   .PageBanner {
-    margin-bottom: 48px;
+    & + div.content {
+      margin-top: 48px;
+    }
 
     &__text {
       &--subtitle {

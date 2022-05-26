@@ -5,14 +5,13 @@
   padding-bottom: 24px;
 
   blockquote {
-    color: #fff;
+    margin-bottom: 0;
   }
 }
 
 blockquote {
   font-size: 1.4em;
   font-style: italic;
-
   padding: 1.2em 30px 1.2em 75px;
   line-height: 1.6;
   position: relative;
@@ -35,6 +34,10 @@ blockquote {
     font-style: normal;
     font-weight: bold;
     margin-top: 1em;
+  }
+
+  &.primary-color-text {
+    color: $primary-color;
   }
 }
 

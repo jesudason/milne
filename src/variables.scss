@@ -4,8 +4,16 @@ $primary-color: #ea5a17;
 $secondary-color: #5eb1bf;
 $brand-black: #042a2b;
 $brand-white: #fcebd8;
-$accent-color: #f5a242;
+$tertiary-color: #f5a242;
 $border-radius: 0.25rem;
+
+:export {
+  primary: $primary-color;
+  secondary: $secondary-color;
+  tertiary: $tertiary-color;
+  white: $brand-white;
+  black: $brand-black;
+}
 
 @mixin button-style($bg, $clr) {
   background: $bg;
