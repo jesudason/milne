@@ -29,8 +29,12 @@
     }
   }
 
-  a.navbar-brand {
+  a.navbar-brand span {
     padding: 16px 24px;
+  }
+
+  a.navbar-brand img {
+    height: 55px;
   }
 
   button.navbar-toggler,

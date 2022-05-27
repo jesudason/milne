@@ -7,6 +7,7 @@ import "./TilesBlock.scss";
 
 function TileCard(props) {
   const image = props.image;
+  console.log("image", image);
   const heading = props.heading;
   const text = props.text;
   const hex = props.hex;

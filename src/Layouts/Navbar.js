@@ -3,31 +3,43 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import sanityClient from "../Client";
+import { urlFor } from "../helpers";
 
 export const Navigation = () => {
   const [mainNav, setMainNav] = useState(null);
+  const [siteData, setSiteData] = useState(null);
 
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "siteSettings"]{
+        `*[_type == "siteSettings" ]{
           mainNav[]->{
             _id,
             slug,
             title,
-          }
+          },
+          logo,
+          title
         }`
       )
       .then((data) => {
-        setMainNav(data[0].mainNav);
+        setSiteData(data[0]);
+        setMainNav(data[0]?.mainNav);
       })
       .catch(console.error);
   }, []);
+  const logo = siteData && siteData.logo;
+  const title = siteData && siteData.title;
+  let logoUrl = "";
+  if (logo) {
+    logoUrl = urlFor(logo).url();
+  }
+  console.log("siteData", logo);
   return (
     <div className="Navigation">
       <Navbar collapseOnSelect fixed="top" bg="light" expand="lg">
         <Navbar.Brand as={Link} to="/" href="/">
-          React-Bootstrap
+          {logo ? <img src={logoUrl} /> : <span>{title}</span>}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">

@@ -14,7 +14,16 @@
       margin-bottom: 24px;
       border: none;
       border-radius: $border-radius;
+      transition: 0.3s;
       box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+      padding: 4px 8px;
+
+      &:focus,
+      &:active,
+      &:hover {
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        outline: none;
+      }
     }
   }
 }
