@@ -3,7 +3,8 @@ import "./FeatureText.scss";
 import variables from "../variables.scss";
 
 export const FeatureText = (props) => {
-  console.log(props);
+  console.log("FeatureText", props.component);
+
   return (
     <div
       id={props.component._key}
@@ -13,7 +14,8 @@ export const FeatureText = (props) => {
       <p
         style={{
           color:
-            props.component.backgroundColor === "white"
+            props.component.backgroundColor === "white" ||
+            props.component.backgroundColor === "tertiary"
               ? variables.black
               : variables.white,
         }}

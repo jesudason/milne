@@ -3,7 +3,7 @@ import "./Blockquote.scss";
 import variables from "../variables.scss";
 
 export const Blockquote = (props) => {
-  console.log(props);
+  console.log("Blockquote", props.component);
   return (
     <div
       id={props.component._key}
@@ -13,7 +13,8 @@ export const Blockquote = (props) => {
       <blockquote
         style={{
           color:
-            props.component.backgroundColor === "white"
+            props.component.backgroundColor === "white" ||
+            props.component.backgroundColor === "tertiary"
               ? variables.black
               : variables.white,
         }}

@@ -40,7 +40,7 @@ function App() {
       })
       .catch(console.error);
   }, []);
-
+  // console.log(pages);
   return (
     <BrowserRouter>
       <div className="App wrapper d-flex flex-column">

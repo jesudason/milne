@@ -22,7 +22,7 @@ function SetMarkers(props) {
     });
 
   const map = useMap();
-  markersArr.length > 0 && map.fitBounds(markersArr, { padding: [24, 24] });
+  markersArr.length > 0 && map.fitBounds(markersArr, { padding: [42, 42] });
 
   return (
     <>
@@ -80,7 +80,9 @@ function SetMarkers(props) {
 
 export const Map = (props) => {
   const component = props.component;
+  // console.log("props", props);
   const defaultCenter = component.center;
+  const title = component.title;
   const [locations, setLocations] = useState(null);
 
   useEffect(() => {
@@ -94,11 +96,10 @@ export const Map = (props) => {
 
   return (
     <div className="Map" id={component._key}>
-      <h2>Map</h2>
+      {title ? <h2>{title}</h2> : ""}
       <div className="Map__container">
         <MapContainer
           center={[defaultCenter.lat, defaultCenter.lng]}
-          zoom={3}
           scrollWheelZoom={false}
         >
           <TileLayer

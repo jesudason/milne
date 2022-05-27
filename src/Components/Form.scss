@@ -3,13 +3,18 @@
 .Form {
   padding-top: 24px;
   padding-bottom: 24px;
-  background-color: $primary-color;
-  color: #fff;
 
+  h2 {
+    margin-bottom: 24px;
+  }
   form {
     .textarea textarea,
     .input input {
       width: 100%;
+      margin-bottom: 24px;
+      border: none;
+      border-radius: $border-radius;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
     }
   }
 }
@@ -23,14 +28,24 @@
       .input {
         display: inline-block;
         width: 50%;
-      }
-
-      .input {
-        padding-left: 8px;
+        padding-left: 16px;
         &:first-of-type {
-          padding-right: 8px;
+          padding-right: 16px;
           padding-left: 0;
         }
+      }
+
+      .textarea textarea,
+      .input input {
+        margin-bottom: 32px;
+      }
+
+      input {
+        line-height: 32px;
+      }
+
+      textarea {
+        height: 100px;
       }
     }
   }
