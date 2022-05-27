@@ -3,18 +3,18 @@
 .FeatureText {
   padding-top: 24px;
   padding-bottom: 24px;
-}
 
-p {
-  font-size: 1.4em;
-  padding: 1.2em 30px 1.2em 75px;
-  line-height: 1.6;
-  position: relative;
-  margin-bottom: 0;
-  text-align: center;
+  p {
+    font-size: 1.4em;
+    padding: 1.2em 30px 1.2em 75px;
+    line-height: 1.6;
+    position: relative;
+    margin-bottom: 0;
+    text-align: center;
 
-  &.primary-color-text {
-    color: $primary-color;
+    &.primary-color-text {
+      color: $primary-color;
+    }
   }
 }
 

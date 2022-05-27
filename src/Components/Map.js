@@ -2,12 +2,20 @@ import { TelephoneFill, EnvelopeFill, Mailbox2 } from "react-bootstrap-icons";
 import React, { useEffect, useState } from "react";
 import "./Map.scss";
 import sanityClient from "../Client";
-import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  useMap,
+  Marker,
+  Popup,
+  ZoomControl,
+} from "react-leaflet";
 
 function SetMarkers(props) {
   const component = props.component;
   const locations = props.locations;
   const locationsToDisplay = [];
+  const locationData = [];
   const markersArr = [];
 
   component.points.map((point) => {
@@ -18,6 +26,7 @@ function SetMarkers(props) {
     locations.forEach((location) => {
       if (locationsToDisplay.includes(location._id)) {
         markersArr.push(location.marker);
+        locationData.push(location);
       }
     });
 
@@ -34,38 +43,42 @@ function SetMarkers(props) {
             key={index}
           >
             <Popup>
-              {locations[index].title ? <p>{locations[index].title} </p> : ""}
-              {locations[index].address ? (
+              {locationData[index].title ? (
+                <p>{locationData[index].title} </p>
+              ) : (
+                ""
+              )}
+              {locationData[index].address ? (
                 <span className="popup__content">
                   <span className="popup__content--icon">
                     <Mailbox2 />
                   </span>
-                  {locations[index].address}{" "}
+                  {locationData[index].address}
                 </span>
               ) : (
                 ""
               )}
-              {locations[index].phone ? (
+              {locationData[index].phone ? (
                 <span className="popup__content">
                   <span className="popup__content--icon">
                     <TelephoneFill />
                   </span>
 
-                  <a href={`tel:${locations[index].phone}`}>
-                    {locations[index].phone}
+                  <a href={`tel:${locationData[index].phone}`}>
+                    {locationData[index].phone}
                   </a>
                 </span>
               ) : (
                 ""
               )}
-              {locations[index].email ? (
+              {locationData[index].email ? (
                 <span className="popup__content">
                   <span className="popup__content--icon">
                     <EnvelopeFill />
                   </span>
 
-                  <a href={`mailto:${locations[index].email}`}>
-                    {locations[index].email}
+                  <a href={`mailto:${locationData[index].email}`}>
+                    {locationData[index].email}
                   </a>
                 </span>
               ) : (
@@ -93,7 +106,7 @@ export const Map = (props) => {
       })
       .catch(console.error);
   }, []);
-
+  // L.control.zoom(position, "topright");
   return (
     <div className="Map" id={component._key}>
       {title ? <h2>{title}</h2> : ""}
@@ -101,6 +114,7 @@ export const Map = (props) => {
         <MapContainer
           center={[defaultCenter.lat, defaultCenter.lng]}
           scrollWheelZoom={false}
+          zoomControl={false}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -111,6 +125,7 @@ export const Map = (props) => {
           ) : (
             ""
           )}
+          <ZoomControl position="bottomright" />
         </MapContainer>
       </div>
     </div>

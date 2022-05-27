@@ -6,22 +6,33 @@
   .leaflet-container {
     height: 250px;
     width: 100%;
-  }
 
-  .leaflet-popup-pane {
-    font-size: 13px;
-
-    p,
-    span {
-      padding: 6px 0;
-      margin: 0;
-    }
-    .popup__content {
-      display: block;
-
-      &--icon {
-        padding-right: 8px;
+    a.leaflet-control-zoom-in,
+    a.leaflet-popup-close-button {
+      &:focus,
+      &:active,
+      &:hover {
+        color: initial;
       }
+      &::after {
+        border-bottom: none !important;
+      }
+    }
+  }
+}
+.leaflet-popup-pane {
+  font-size: 13px;
+
+  p,
+  span {
+    padding: 6px 0;
+    margin: 0;
+  }
+  .popup__content {
+    display: block;
+
+    &--icon {
+      padding-right: 8px;
     }
   }
 }
