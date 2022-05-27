@@ -20,11 +20,15 @@ $border-radius: 0.25rem;
   border: solid 1px $bg;
   color: $clr;
 
+  &:focus,
   &:hover {
     background: darken($bg, 8%);
     border-color: $bg;
     transition: all 0.3s ease;
+    outline: none;
+    box-shadow: none;
   }
+
   &:active {
     background: darken($bg, 25%);
   }
@@ -56,7 +60,7 @@ a {
   display: inline-block;
 }
 
-a:not([rel~="external"]) {
+a:not([rel~="external"]):not(.btn) {
   line-height: initial;
   &:after {
     display: block;
@@ -65,9 +69,14 @@ a:not([rel~="external"]) {
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
   }
+
+  &:focus:after,
+  &:active:after,
   &:hover:after {
     transform: scaleX(1);
+    outline: none;
   }
+
   &:after {
     transform-origin: 0 50%;
   }
@@ -85,8 +94,11 @@ a[rel~="external"] {
     transition: 0.3s;
   }
 
+  &:focus,
+  &:active,
   &:hover {
     text-decoration: none;
+    outline: none;
 
     &::after {
       left: 16px;

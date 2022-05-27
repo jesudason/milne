@@ -71,7 +71,7 @@ function App() {
               )}
           </Routes>
         </main>
-        <footer className="bg-dark">
+        <footer>
           <Footer />
         </footer>
       </div>

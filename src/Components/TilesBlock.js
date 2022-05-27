@@ -1,13 +1,12 @@
 import { Row, Col, Card } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { urlFor, hexToRgbA } from "../helpers";
+import { urlFor, hexToRgbA, matchSlugs } from "../helpers";
 import sanityClient from "../Client";
 import "./TilesBlock.scss";
 
 function TileCard(props) {
   const image = props.image;
-  console.log("image", image);
+  // console.log("image", image);
   const heading = props.heading;
   const text = props.text;
   const hex = props.hex;

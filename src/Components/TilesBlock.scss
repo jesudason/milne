@@ -12,21 +12,24 @@
       text-decoration: inherit;
       display: block;
 
-      &::after {
-        content: none;
-      }
-
       .card {
-        box-shadow: var(--box-shadow);
-        border: none;
-
-        &:hover {
+        &:hover,
+        &:focus,
+        &:active {
+          box-shadow: var(--box-shadow);
           transition: 1s;
           box-shadow: var(--hover-shadow);
           cursor: pointer;
           -webkit-transform: scale(1.02, 1.02);
           transform: scale(1.02, 1.02);
+          transform: none;
         }
+      }
+
+      &::after {
+        content: none !important;
+        border: none !important;
+        border-bottom: none !important;
       }
     }
 

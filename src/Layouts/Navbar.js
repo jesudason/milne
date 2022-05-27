@@ -34,7 +34,7 @@ export const Navigation = () => {
   if (logo) {
     logoUrl = urlFor(logo).url();
   }
-  console.log("siteData", logo);
+  console.log("mainNav", mainNav);
   return (
     <div className="Navigation">
       <Navbar collapseOnSelect fixed="top" bg="light" expand="lg">
