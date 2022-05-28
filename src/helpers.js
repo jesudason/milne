@@ -1,5 +1,7 @@
 import imageUrlBuilder from "@sanity/image-url";
 import client from "./Client";
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 
 const builder = imageUrlBuilder(client);
 
@@ -30,4 +32,13 @@ export function hexToRgbA(hex, opacity) {
     );
   }
   throw new Error("Bad Hex");
+}
+
+export function ScrollToTop(props) {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return <>{props.children}</>;
 }

@@ -24,6 +24,16 @@ main {
   margin-bottom: 24px;
 }
 
+[id]::before {
+  content: "";
+  display: block;
+  height: 81px;
+  margin-top: -81px;
+  visibility: hidden;
+  position: relative;
+  z-index: -1;
+}
+
 @media only screen and (min-width: $tablet) {
   .content {
     margin-bottom: 32px;

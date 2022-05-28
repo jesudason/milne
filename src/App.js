@@ -9,6 +9,7 @@ import { Navigation } from "./Layouts/Navbar";
 import { Footer } from "./Layouts/Footer";
 import "./overrides.scss";
 import "./typography.scss";
+import { ScrollToTop } from "./helpers";
 
 function App() {
   const [pages, setPages] = useState(null);
@@ -43,38 +44,40 @@ function App() {
   // console.log(pages);
   return (
     <BrowserRouter>
-      <div className="App wrapper d-flex flex-column">
-        <header>
-          <Navigation />
-        </header>
-        <main className="flex-grow-1">
-          <Routes>
-            <Route
-              path="/*"
-              element={<NotFound title="Page not Found" type="content" />}
-            />
-            {pages &&
-              pages.map((page, index) =>
-                page.pageType == "index" ? (
-                  <Route
-                    path={"/"}
-                    key={index}
-                    element={<LayoutDefault props={page} />}
-                  />
-                ) : (
-                  <Route
-                    path={"/" + page.slug?.current}
-                    key={index}
-                    element={<LayoutDefault props={page} />}
-                  />
-                )
-              )}
-          </Routes>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
+      <ScrollToTop>
+        <div className="App wrapper d-flex flex-column">
+          <header>
+            <Navigation />
+          </header>
+          <main className="flex-grow-1">
+            <Routes>
+              <Route
+                path="/*"
+                element={<NotFound title="Page not Found" type="content" />}
+              />
+              {pages &&
+                pages.map((page, index) =>
+                  page.pageType == "index" ? (
+                    <Route
+                      path={"/"}
+                      key={index}
+                      element={<LayoutDefault props={page} />}
+                    />
+                  ) : (
+                    <Route
+                      path={"/" + page.slug?.current}
+                      key={index}
+                      element={<LayoutDefault props={page} />}
+                    />
+                  )
+                )}
+            </Routes>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </div>
+      </ScrollToTop>
     </BrowserRouter>
   );
 }

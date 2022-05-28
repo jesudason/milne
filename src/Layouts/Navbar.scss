@@ -25,7 +25,7 @@
     }
 
     &:after {
-      border-color: rgba(0, 0, 0, 0.7);
+      border-bottom-color: rgba(0, 0, 0, 0.7) !important;
     }
   }
 
@@ -44,7 +44,7 @@
     border: none;
 
     &:after {
-      border-bottom: none;
+      border-bottom: none !important;
     }
 
     &:active,

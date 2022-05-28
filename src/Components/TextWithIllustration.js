@@ -7,8 +7,8 @@ import sanityClient from "../Client";
 export const TextWithIllustration = (props) => {
   const component = props.component;
   const [pages, setPages] = useState(null);
-  console.log("TextWithIllustration", component.callToActionBtn._ref);
-  const btnLinkRef = component.callToActionBtn._ref;
+  console.log("TextWithIllustration", component.callToActionBtn?._ref);
+  const btnLinkRef = component.callToActionBtn?._ref;
   let slug = "";
   console.log("TextWithIllustration", component);
 

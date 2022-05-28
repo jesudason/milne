@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { urlFor, hexToRgbA, matchSlugs } from "../helpers";
 import sanityClient from "../Client";
 import "./TilesBlock.scss";
+import { HashLink as Link } from "react-router-hash-link";
 
 function TileCard(props) {
   const image = props.image;
-  // console.log("image", image);
   const heading = props.heading;
   const text = props.text;
   const hex = props.hex;
@@ -30,11 +30,13 @@ function TileCard(props) {
 export const TilesBlock = (props) => {
   const component = props.component;
   const [pages, setPages] = useState(null);
-  const slugs = [
+
+  let slugs = [
     component.url1?._ref,
     component.url2?._ref,
     component.url3?._ref,
   ];
+
   const colors = [
     component.hexColour1,
     component.hexColour2,
@@ -45,6 +47,12 @@ export const TilesBlock = (props) => {
     component.tileHeading2,
     component.tileHeading3,
   ];
+  const anchors = [
+    component.linkAnchor1,
+    component.linkAnchor2,
+    component.linkAnchor3,
+  ];
+
   const images = [component.image1, component.image2, component.image3];
 
   const tileTexts = [
@@ -69,11 +77,20 @@ export const TilesBlock = (props) => {
 
   pages &&
     pages.forEach((page) => {
-      if (slugs.includes(page._id)) {
-        const objIndex = slugs.indexOf(page._id);
-        slugs[objIndex] = page.slug.current;
-      }
+      slugs.map((slug, index) =>
+        slug === page._id ? (slugs[index] = page.slug.current) : slug
+      );
     });
+
+  function getSrc(idx) {
+    let src = slugs[idx];
+    if (!!anchors[idx]) {
+      src = `./${src}#${anchors[idx]}`;
+    } else {
+      src = `./${src}`;
+    }
+    return src;
+  }
 
   return (
     <div className="TilesBlock" id={props.component._key}>
@@ -81,14 +98,14 @@ export const TilesBlock = (props) => {
         {Array.from({ length: 3 }).map((_, idx) =>
           !!slugs[idx] ? (
             <Col key={idx}>
-              <a href={`./${slugs[idx]}`}>
+              <Link to={getSrc(idx)}>
                 <TileCard
                   hex={colors[idx]}
                   heading={headings[idx]}
                   text={tileTexts[idx]}
                   image={images[idx]}
                 />
-              </a>
+              </Link>
             </Col>
           ) : (
             <Col key={idx}>
