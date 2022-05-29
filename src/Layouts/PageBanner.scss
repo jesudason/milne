@@ -1,118 +1,168 @@
 @import "../variables.scss";
 
 .PageBanner {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   position: relative;
-  margin-top: 0;
-
-  border-bottom: solid 1px $brand-black;
-  background-size: cover;
-  background-color: $brand-black;
-  background-position: center;
-  color: #fff;
-
   & + div.content {
     margin-top: 24px;
   }
 
-  &__skinny {
-    height: 300px;
-    display: flex;
-  }
-
-  &__text {
+  .hero-banner {
+    position: relative;
+    padding: 80px 40px;
+    min-height: 300px;
+    max-height: 31.375rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-    height: 100%;
-    flex: 1;
 
-    &--title {
-      margin-bottom: 24px;
-      font-weight: 600;
-      z-index: 3;
-    }
-
-    &--subtitle {
-      font-weight: 400;
-      z-index: 3;
-      font-size: 1.424rem;
-    }
-  }
-
-  &__hero {
-    height: 502px;
-    display: flex;
-
-    .PageBanner__text {
-      align-items: center;
-
-      &--title {
-        font-size: 48px;
-      }
-
-      &--subtitle {
-        font-size: 32px;
-      }
-    }
-  }
-
-  &__image {
-    flex: 1;
-
-    img {
-      max-height: 100%;
+    &__background {
+      background-position: 50%;
+      background-size: cover;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
       width: 100%;
+
+      &-blur {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.65) 0,
+          rgba(0, 0, 0, 0.65) 35%,
+          transparent
+        );
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+    &__text {
+      position: relative;
+      color: $brand-white;
+
+      .PageBanner__text--title {
+        margin-bottom: 24px;
+        font-weight: 600;
+        z-index: 3;
+        font-size: 60px;
+      }
+
+      .PageBanner__text--subtitle {
+        font-weight: 400;
+        z-index: 3;
+        font-size: 1.424rem;
+      }
     }
   }
 
-  &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      0deg,
-      rgba(33, 37, 41, 0.55) 0,
-      rgba(33, 37, 41, 0.25) 65%,
-      transparent
-    );
+  .banner {
+    background-color: $secondary-color;
+
+    .container {
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      height: 27.1875rem;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    &__background {
+      background-position: 50%;
+      background-size: cover;
+      height: 100%;
+      left: 0;
+      opacity: 0.6;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+
+      &:after {
+        background: #1f061f;
+        bottom: 0;
+        content: "";
+        display: block;
+        opacity: 0.65;
+        position: absolute;
+        top: 11.5625rem;
+        width: 100%;
+      }
+    }
+
+    &__details {
+      align-items: flex-start;
+      position: relative;
+      color: $brand-white;
+      height: 50%;
+      text-align: left;
+      width: 100%;
+
+      .PageBanner__text--title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        letter-spacing: normal;
+        line-height: 1.18;
+        margin: 0;
+      }
+
+      .PageBanner__text--subtitle {
+        font-size: 1.2rem;
+        line-height: 1.42;
+        font-weight: 200;
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
 @media only screen and (min-width: $tablet) {
   .PageBanner {
-    border-bottom: solid 1px darkslategray;
-
     & + div.content {
       margin-top: 32px;
     }
-
-    &__text {
-      &--subtitle {
-        font-size: 1.953rem;
-      }
+    .hero-banner {
+      min-height: 480px;
+      max-height: 37.875rem;
     }
 
-    &__hero {
-      height: 480px;
-
-      .PageBanner__text {
-        align-items: center;
-
-        &--title {
-          font-size: 48px;
-        }
-
-        &--subtitle {
-          font-size: 32px;
+    .banner {
+      &__background {
+        &:after {
+          top: 0;
+          width: 40%;
         }
       }
-    }
+      .container {
+        align-items: flex-start;
+        justify-content: center;
+        margin-left: 32px;
+      }
+      &__details {
+        height: auto;
+        width: 40%;
+        text-align: left;
 
-    &__skinny {
-      height: 300px;
+        .PageBanner__text--title {
+          font-size: 2.8125rem;
+          line-height: 1.33;
+          letter-spacing: -0.0375rem;
+          padding-right: 0.625rem;
+        }
+
+        // .PageBanner__text--subtitle {
+
+        // }
+      }
     }
   }
 }
@@ -122,31 +172,39 @@
     & + div.content {
       margin-top: 48px;
     }
-
-    &__text {
-      &--subtitle {
-        font-size: 1.953rem;
+    .banner {
+      .container {
+        margin-left: calc((100vw - 960px) / 2);
       }
-    }
 
-    &__hero {
-      height: 520px;
-
-      .PageBanner__text {
-        align-items: center;
-
-        &--title {
-          font-size: 72px;
-        }
-
-        &--subtitle {
-          font-size: 40px;
+      &__details {
+        .PageBanner__text--title {
+          font-size: 3.75rem;
+          line-height: 1.17;
+          letter-spacing: -0.05625rem;
+          padding-right: 0;
         }
       }
     }
+  }
+}
 
-    &__skinny {
-      height: 355px;
+@media only screen and (min-width: 1200px) {
+  .PageBanner {
+    .banner {
+      .container {
+        margin-left: calc((100vw - 1140px) / 2);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .PageBanner {
+    .banner {
+      .container {
+        margin-left: calc((100vw - 1320px) / 2);
+      }
     }
   }
 }
